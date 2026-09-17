@@ -28,4 +28,11 @@ public class Game {
         board.placeMark(row, col, currentPlayer);
         return true;
     }
+    public void switchPlayer(){
+        if (currentPlayer == 'X') {
+            currentPlayer = 'O';
+        } else {
+            currentPlayer = 'X';
+        }
+    }
 }
