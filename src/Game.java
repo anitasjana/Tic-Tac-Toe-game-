@@ -18,21 +18,26 @@ public class Game {
     public void printBoard(){
        board.printBoard();
     }
-    public boolean makeMove(int position){
-        int row = position/3;
-        int col =position%3;
 
-        if(board.isOccupied(row, col)){
-            return false;
+        public boolean makeMove(int position){
+            int row = position/3;
+            int col =position%3;
+
+            if(board.isOccupied(row, col)){
+                return false;
+            }
+            board.placeMark(row, col, currentPlayer);
+            return true;
         }
-        board.placeMark(row, col, currentPlayer);
-        return true;
-    }
+
     public void switchPlayer(){
         if (currentPlayer == 'X') {
             currentPlayer = 'O';
         } else {
             currentPlayer = 'X';
         }
+    }
+    public boolean checkWinner(){
+        return checker.checkWinner(board, currentPlayer);
     }
 }

@@ -1,20 +1,19 @@
-package src;
+
 
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
+        Board board =new Board();
 
-        Game game = new Game();
-
-        game.printBoard();
+        board.initializeBoard();
+        board.printBoard();
         
         Scanner sc = new Scanner(System.in);
 
         char player ='X' ;
         int moves=0;
         GameStatus status = GameStatus.RUNNING;
-
         while(moves<9 ){
                 
             System.out.print("Player " + player + ", choose position: ");
@@ -27,21 +26,25 @@ public class Main{
             int positions = sc.nextInt();
             int position=positions-1;
 
+
             if(position<0 || position>8){
                 System.out.print("invalid position , plz give the position into 1 to 9");
                 continue;
             }
 
-            boolean moveSuccessful = game.makeMove(position);
+            int row = position/3;
+            int col= position%3;
 
-            if (!moveSuccessful) {
-                System.out.println("Position already occupied");
-                continue;
+            if (board.isOccupied(row, col)) {
+               System.out.println("Position already occupied");
+               continue;
             }
 
-            game.printBoard();
-
-            if(game.checkWinner()){
+            board.placeMark(row, col, player);
+            board.printBoard();
+            
+            WinChecker checker = new WinChecker();
+            if(checker.checkWinner(board, player)){
                 if(player=='X'){
                     status = GameStatus.X_WON;
                 }
@@ -49,9 +52,10 @@ public class Main{
                     status =GameStatus.O_WON;
                 }
                 break;
+                // System.out.println("Player " + player + " wins");
+                // break;
             }
-            game.switchPlayer();
-            
+
             if (player == 'X') {
                 player = 'O';
             } else {
@@ -66,5 +70,11 @@ public class Main{
         else if (status == GameStatus.O_WON) {
             System.out.println("Player O wins!");
         }
+
+
+
+
+    
+
     }
 }
