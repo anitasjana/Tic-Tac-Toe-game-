@@ -19,16 +19,21 @@ public class Game {
        board.printBoard();
     }
 
-        public boolean makeMove(int position){
-            int row = position/3;
-            int col =position%3;
-
-            if(board.isOccupied(row, col)){
-                return false;
-            }
-            board.placeMark(row, col, currentPlayer);
-            return true;
+    public boolean makeMove(int position)throws InvalidMoveException{
+        
+        if(position < 0 || position > 8){
+              throw new InvalidMoveException("Position must be between 1 and 9");
         }
+        int row = position/3;
+        int col =position%3;
+
+        if(board.isOccupied(row, col)){
+            // return false;
+            throw new InvalidMoveException("Position already occupied");
+        }
+        board.placeMark(row, col, currentPlayer);
+        return true;
+    }
 
     public void switchPlayer(){
         if (currentPlayer == 'X') {

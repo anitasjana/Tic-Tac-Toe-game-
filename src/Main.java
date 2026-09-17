@@ -1,7 +1,7 @@
 package src;
 
 import java.util.Scanner;
-
+import  java.util.InputMismatchException;
 public class Main{
     public static void main(String[] args) {
 
@@ -17,25 +17,43 @@ public class Main{
                 
             System.out.print("Player " + game.getCurrentPlayer() + ", choose position: ");
 
-            if(!sc.hasNextInt()){
-                System.out.print("It's not intizer , plz give the intizer position into 1 to 9");
+            // if(!sc.hasNextInt()){
+            //     System.out.print("It's not intizer , plz give the intizer position into 1 to 9");
+            //     sc.next();
+            //     continue;
+            // }
+
+            // int positions = sc.nextInt();
+            // int position=positions-1;
+            int position;
+            try {
+                int positions = sc.nextInt();
+                position=positions-1;
+            }
+            catch(InputMismatchException e){
+                System.err.println("Please enter a number from 1 to 9");
                 sc.next();
                 continue;
-            }
-            int positions = sc.nextInt();
-            int position=positions-1;
 
-            if(position<0 || position>8){
-                System.out.print("invalid position , plz give the position into 1 to 9");
-                continue;
             }
 
-            boolean moveSuccessful = game.makeMove(position);
+            // if(position<0 || position>8){
+            //     System.out.print("invalid position , plz give the position into 1 to 9");
+            //     continue;
+            // }
 
-            if (!moveSuccessful) {
-                System.out.println("Position already occupied");
-                continue;
+            // boolean moveSuccessful = game.makeMove(position);
+            // if (!moveSuccessful) {
+            //     System.out.println("Position already occupied");
+            //     continue;
+            // }
+            try{
+                 game.makeMove(position);
             }
+                catch(InvalidMoveException e){
+                    System.err.println(e.getMessage());
+                    continue;
+                }
 
             game.printBoard();
 
@@ -51,15 +69,15 @@ public class Main{
             moves++;        
         }
         game.checkDraw(moves);
-        
+
         if(game.gameStatus() == GameStatus.X_WON){
             System.out.println("Player X wins");
         }
         else if(game.gameStatus() == GameStatus.O_WON){
-            System.out.println("Player O wins!");
+            System.out.println("Player O wins");
         }
         else if(game.gameStatus() == GameStatus.DRAW){
-            System.out.println("Game is a draw!");
+            System.out.println("Game is a over");
         }
     }
 }
