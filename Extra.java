@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Main{
+public class Extra{
     public static void main(String[] args) {
         Board board =new Board();
 
