@@ -37,7 +37,27 @@ public class Game {
             currentPlayer = 'X';
         }
     }
-    public boolean checkWinner(){
-        return checker.checkWinner(board, currentPlayer);
+    public GameStatus gameStatus(){
+        return status;
+    }
+    public void updateStatus(){
+
+        if(checker.checkWinner(board, currentPlayer)){
+            if(currentPlayer=='X'){
+                status = GameStatus.X_WON;
+            }
+            else{
+                status =GameStatus.O_WON;
+            }
+        }
+    }
+    public void checkDraw(int moves){
+
+        if(moves == 9 && status == GameStatus.RUNNING){
+            status = GameStatus.DRAW;
+        }
+    }
+    public char getCurrentPlayer() {
+        return currentPlayer;
     }
 }

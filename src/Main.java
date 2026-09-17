@@ -10,14 +10,12 @@ public class Main{
         game.printBoard();
         
         Scanner sc = new Scanner(System.in);
-
-        char player ='X' ;
+        
         int moves=0;
-        GameStatus status = GameStatus.RUNNING;
 
         while(moves<9 ){
                 
-            System.out.print("Player " + player + ", choose position: ");
+            System.out.print("Player " + game.getCurrentPlayer() + ", choose position: ");
 
             if(!sc.hasNextInt()){
                 System.out.print("It's not intizer , plz give the intizer position into 1 to 9");
@@ -41,30 +39,27 @@ public class Main{
 
             game.printBoard();
 
-            if(game.checkWinner()){
-                if(player=='X'){
-                    status = GameStatus.X_WON;
-                }
-                else{
-                    status =GameStatus.O_WON;
-                }
+            game.updateStatus();
+
+            if(game.gameStatus() == GameStatus.X_WON ||
+            game.gameStatus() == GameStatus.O_WON){
                 break;
             }
+
             game.switchPlayer();
-            
-            if (player == 'X') {
-                player = 'O';
-            } else {
-                player = 'X';
-            }
 
             moves++;        
         }
-        if(status==GameStatus.X_WON){
+        game.checkDraw(moves);
+        
+        if(game.gameStatus() == GameStatus.X_WON){
             System.out.println("Player X wins");
         }
-        else if (status == GameStatus.O_WON) {
+        else if(game.gameStatus() == GameStatus.O_WON){
             System.out.println("Player O wins!");
+        }
+        else if(game.gameStatus() == GameStatus.DRAW){
+            System.out.println("Game is a draw!");
         }
     }
 }
