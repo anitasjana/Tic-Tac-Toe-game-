@@ -23,6 +23,12 @@ public class TicTacTio {
         while(j<board.length ){
                 
             System.out.print("Player " + player + ", choose position: ");
+            
+            if(!sc.hasNextInt()){
+                System.out.print("It's not intizer , plz give the intizer position into 1 to 9");
+                sc.next();
+                continue;
+            }
             int positions = sc.nextInt();
             int position=positions-1;
 
