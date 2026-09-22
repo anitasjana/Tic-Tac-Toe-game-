@@ -24,7 +24,8 @@ const Board = ({ board, handleClick, resetGame, currentPlayer, winner}) => {
         </div>
       </div>
       <div className="turn-indicator">
-        {currentPlayer}'s Turn
+        {winner ? (winner=== "Draw" ? "Draw" : `${winner} is Wins`) : `${currentPlayer} 's Turn`}
+        
       </div>
 
       <div className="actions">
