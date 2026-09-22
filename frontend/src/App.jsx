@@ -1,8 +1,10 @@
 import { useState } from "react";
+import Board from "./components/Board";
 import "./App.css";
+
+
 function App() {
   const [board,setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
-
   const [currentPlayer,setCurrentPlayer]=useState("X");
   const [winner,setWinner]=useState(null);
 
@@ -11,6 +13,7 @@ function App() {
     setCurrentPlayer("X");
     setWinner(null);
   };
+
   const handleClick = (index)=>{
       if(winner!=null){
         return ;
@@ -55,24 +58,12 @@ function App() {
   };
  
   return (
-    <div className="board">
+    <div className="app-container">
       <h1>Tic-Tac-Toe</h1>
       {winner && <h1>{winner === "Draw" ? "Draw" : `${winner} wins`}  </h1>}
-      {winner && <button onClick={resetGame}>Restart Game</button>}
+      {/* {winner && <button onClick={resetGame}>Restart Game</button>} */}
 
-      <div>
-        <button onClick={ ()=> handleClick(0) }>{board[0]}</button>
-        <button onClick={ ()=> handleClick(1) }>{board[1]}</button>
-        <button onClick={ ()=> handleClick(2) }>{board[2]}</button>
-        <br />
-        <button onClick={ ()=> handleClick(3) }>{board[3]}</button>
-        <button onClick={ ()=> handleClick(4) }>{board[4]}</button>
-        <button onClick={ ()=> handleClick(5) }>{board[5]}</button>
-        <br />
-        <button onClick={ ()=> handleClick(6) }>{board[6]}</button>
-        <button onClick={ ()=> handleClick(7) }>{board[7]}</button>
-        <button onClick={ ()=> handleClick(8)}>{board[8]}</button>
-      </div>
+      <Board board={board} handleClick={handleClick} resetGame={resetGame} currentPlayer={currentPlayer} winner={winner}/>
     </div>
   );
 }

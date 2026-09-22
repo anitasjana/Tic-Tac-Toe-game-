@@ -1,0 +1,131 @@
+.app-container{
+  align-content: center;
+  justify-items: center;
+}
+h1{
+  color: #2dd4bf;
+}
+
+/* Main Card */
+.game-card {
+  background-color: #1e293b;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 380px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.game-header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 1rem;
+}
+
+.game-header h2 {
+  color: #2dd4bf; /* Teal */
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.stats strong {
+  color: #fff;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background-color: #334155;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.cell {
+  width: 80px;
+  height: 80px;
+  background-color: #0f172a;
+  border: none;
+  border-radius: 6px;
+  color: #2dd4bf; /* Teal Text */
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:hover {
+  background-color: #1e293b;
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+}
+
+/* Turn Indicator */
+.turn-indicator {
+  text-align: center;
+  color: #2dd4bf;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  background: rgba(45, 212, 191, 0.1);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary, .btn-secondary {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: #0d9488;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0f766e;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #475569;
+  color: #94a3b8;
+}
+
+.btn-secondary:hover {
+  background-color: #334155;
+  color: white;
+}
