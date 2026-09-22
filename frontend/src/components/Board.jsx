@@ -25,13 +25,12 @@ const Board = ({ board, handleClick, resetGame, currentPlayer, winner}) => {
       </div>
       <div className="turn-indicator">
         {winner ? (winner=== "Draw" ? "Draw" : `${winner} is Wins`) : `${currentPlayer} 's Turn`}
-        
       </div>
 
       <div className="actions">
-       
-        <button className="btn-secondary" >Restart Game</button>
-       
+       { winner && (
+        <button className="btn-secondary" onClick={resetGame} >Restart Game</button>
+       )}
         <button className="btn-primary">
           Continue to Level 2
         </button>

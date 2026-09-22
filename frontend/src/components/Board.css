@@ -107,9 +107,6 @@ h1{
   cursor: pointer;
   transition: 0.3s;
   font-size: 0.9rem;
-}
-
-.btn-primary {
   background-color: #0d9488;
   color: white;
 }
