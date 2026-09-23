@@ -57,6 +57,15 @@ function App() {
       [0, 4, 8],
       [2, 4, 6]
     ];
+    for (const [a, b, c] of lines) {
+      if (
+        board[a] !== "" &&
+        board[a] === board[b] &&
+        board[a] === board[c]
+      ) {
+        return board[a];
+      }
+    }
     for(const [a, b, c] of lines){
       if( board[a]!="" && board[a]===board[b] && board[a]==board[c] ) {
         return board[a];
@@ -72,7 +81,7 @@ function App() {
       { level===2 ? <Level2/> : 
       <Board board={board} handleClick={handleClick} resetGame={resetGame} currentPlayer={currentPlayer} winner={winner} goToLevel2 ={goToLevel2}/>
       }
-      
+
     </div>
   );
 }
