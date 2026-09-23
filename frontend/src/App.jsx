@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Board from "./components/Board";
-import "./App.css";
+import Level2 from "./components/Level2";
+
 
 
 function App() {
@@ -67,9 +68,11 @@ function App() {
     <div className="app-container">
       <h1>Tic-Tac-Toe</h1>
       {winner && <h1>{winner === "Draw" ? "Draw" : `${winner} wins`}  </h1>}
-      {/* {winner && <button onClick={resetGame}>Restart Game</button>} */}
 
+      { level===2 ? <Level2/> : 
       <Board board={board} handleClick={handleClick} resetGame={resetGame} currentPlayer={currentPlayer} winner={winner} goToLevel2 ={goToLevel2}/>
+      }
+      
     </div>
   );
 }
