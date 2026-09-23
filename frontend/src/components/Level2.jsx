@@ -46,14 +46,19 @@ const Level2 = () => {
     setResult(misereResult);
     return;
     }
-
+    if (!newBoard.includes("")) {
+    setResult("Draw");
+    return;
+    }
     setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
     };
 
   return (
     <div>
       <h1>Level 2</h1>
-
+      <div>
+        {result === "Draw" ? "Draw" : result ? `${result} loses` : `${currentPlayer}'s Turn`}
+      </div>
       <div className="board">
         {board.map((cell, index) => (
           <button key={index} className="cell" onClick={() => handleClick(index)} > {cell} </button>           
