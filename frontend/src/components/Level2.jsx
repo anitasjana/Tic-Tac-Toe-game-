@@ -56,9 +56,7 @@ const Level2 = () => {
   return (
     <div>
       <h1>Level 2</h1>
-      <div>
-        {result === "Draw" ? "Draw" : result ? `${result} loses` : `${currentPlayer}'s Turn`}
-      </div>
+      
       <div className="board">
         {board.map((cell, index) => (
           <button key={index} className="cell" onClick={() => handleClick(index)} > {cell} </button>           
