@@ -1,7 +1,7 @@
 import React from 'react';
 import './Board.css';
 
-const Board = ({ board, handleClick, resetGame, currentPlayer, winner}) => {
+const Board = ({ board, handleClick, resetGame, currentPlayer, winner, goToLevel2}) => {
 
   return (
     <div className="game-card">
@@ -31,7 +31,7 @@ const Board = ({ board, handleClick, resetGame, currentPlayer, winner}) => {
        { winner && (
         <button className="btn-secondary" onClick={resetGame} >Restart Game</button>
        )}
-        <button className="btn-primary">
+        <button className="btn-primary" onClick={goToLevel2}>
           Continue to Level 2
         </button>
       </div>

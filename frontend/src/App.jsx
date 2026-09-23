@@ -7,11 +7,17 @@ function App() {
   const [board,setBoard] = useState(["", "", "", "", "", "", "", "", ""]);
   const [currentPlayer,setCurrentPlayer]=useState("X");
   const [winner,setWinner]=useState(null);
+  const[level,setLevel]=useState(1);
 
   const resetGame = () => {
     setBoard(["", "", "", "", "", "", "", "", ""]);
     setCurrentPlayer("X");
     setWinner(null);
+  };
+
+  const goToLevel2 = () => {
+    setLevel(2);
+    resetGame();
   };
 
   const handleClick = (index)=>{
@@ -63,7 +69,7 @@ function App() {
       {winner && <h1>{winner === "Draw" ? "Draw" : `${winner} wins`}  </h1>}
       {/* {winner && <button onClick={resetGame}>Restart Game</button>} */}
 
-      <Board board={board} handleClick={handleClick} resetGame={resetGame} currentPlayer={currentPlayer} winner={winner}/>
+      <Board board={board} handleClick={handleClick} resetGame={resetGame} currentPlayer={currentPlayer} winner={winner} goToLevel2 ={goToLevel2}/>
     </div>
   );
 }
